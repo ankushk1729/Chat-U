@@ -1,8 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities{
+  .sent-msg {
+    display:flex;
+    justify-content:flex-end;
+  }
+  .sent-msg>div>.message-content {
+    background-color:#20243c;
+    color:#d1d3d8;
+  }
+  .sent-msg>.chat-pfp {
+    content:url(./images/pfp.jpg)
+  }
+}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+*{
+  font-family:'Montserrat',sans-serif;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Montserrat',sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -11,3 +35,97 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.Chat-people {
+  overflow: auto;
+  scrollbar-color: #e0e4fc;
+  scrollbar-width: thin;
+}
+
+.msg-input::-webkit-input-placeholder { 
+  color: #808798;
+  font-size: 12px;
+  
+}
+.msg-input::-moz-placeholder { 
+  color: #808798;
+  font-size: 12px;
+  
+}
+.msg-input:-ms-input-placeholder {
+  color: #808798;
+  font-size: 12px;
+  
+}
+.msg-input:-moz-placeholder { 
+  color: #808798;
+  font-size: 12px;
+  
+}
+
+.Chat-people::-webkit-scrollbar { 
+  width: 6px;
+}
+
+.Chat-people::-webkit-scrollbar-thumb {
+  background-color:#e0e4fc;
+  border-radius: 40px;
+}
+.main-chat::-webkit-scrollbar { 
+  width: 6px;
+}
+
+.main-chat::-webkit-scrollbar-thumb {
+  background-color:#20243c;
+  border-radius: 40px;
+}
+
+
+
+//
+
+.loader {
+	height: 30px;
+	width: 30px;
+}
+
+@keyframes jump {
+	from, to, 60% { transform: translateY(0); }
+	30% { transform: translateY(-100%); }
+}
+.six {
+  height:100%;
+}
+.six > div {
+	background: black;
+	border-radius: 100%;
+	height: 12px;
+	width: 12px;
+	animation: jump 1s ease-in-out infinite;
+}
+.six > div:nth-of-type(2) {
+	animation-delay: .15s;
+}
+.six > div:nth-of-type(3) {
+	animation-delay: .3s;
+}
+
+
+/* .not-found { */
+  /* transform:translateX(-50%); */
+  /* -webkit-animation: cssAnimation 3s forwards;  */
+    /* animation: cssAnimation 3s forwards; */
+/* } */
+
+/* @keyframes cssAnimation {
+  0%   {opacity: 1;}
+  90%  {opacity: 1;}
+  100% {opacity: 0;display:none}
+}
+
+@-webkit-keyframes cssAnimation {
+  0%   {opacity: 1;}
+  90%  {opacity: 1;}
+  100% {opacity: 0;display:none}
+  
+} */

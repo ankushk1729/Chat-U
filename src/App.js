@@ -1,24 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import Verification from './Components/Verification';
+import Chat from './Components/Chat';
+import HomeLanding from './Components/HomeLanding';
+import SideBar from './Components/SideBar';
+import {useState} from 'react';
+import {Route, Switch} from 'react-router-dom';
+import {useAuth} from './hooks/use-auth';
+
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  const auth = useAuth()
+
+  const [showModal, setShowModal] = useState(false)
+
+  return (  
+    <>
+    
+    {
+      !auth.user?<Verification/>:
+    <div className="App grid place-items-center bg-gray min-h-screen ">
+        <section className = 'app-container h-92vh w-90vw md:w-95vw lg:w-92vw bg-white flex rounded-xl shadow-lg'>
+        <SideBar auth = {auth} showModal = {showModal} setShowModal = {setShowModal} />
+            <Switch>
+            <Route path = '/rooms/:id'>
+                <Chat/>
+            </Route>
+            <Route path = '/'>
+                <HomeLanding/>
+            </Route>
+              </Switch>
+        </section>
+        
+    </div>}
+    {/* <Home showHero = {showHero} setShowHero = {setShowHero} /> */}
+    </>
   );
 }
 
