@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, createContext } from "react";
 import { useHistory } from "react-router-dom";
-import {firebase,provider} from './../firebase';
+import {firebase,provider,db} from './../firebase';
 import {useLocalStorage} from './useLocalStorage';
 import { addUser } from "../firebase/utils";
 
@@ -38,6 +38,11 @@ function useProvideAuth() {
           setLocalUser(response.user)
           setUser(response.user);
           history.push('/')
+          db.collection('users').where('email','==',response.user.email).get().then(doc=>{
+            if(doc.empty)
+              addUser(response.user)
+          })
+          
           return response.user;
       })
       .catch(error =>{
@@ -66,7 +71,7 @@ function useProvideAuth() {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((response) => {
-        console.log(response)
+        
         setLocalUser(response.user)
         setUser(response.user)
         
