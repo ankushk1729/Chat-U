@@ -21,7 +21,7 @@ function App() {
     {
       !auth.user?<Verification/>:
     <div className="App grid place-items-center bg-gray min-h-screen ">
-        <section className = 'app-container h-92vh w-90vw md:w-95vw lg:w-92vw bg-white flex rounded-xl shadow-lg'>
+        <section className = 'app-container h-full w-full mobile_xl:h-92vh mobile_xl:w-90vw md:w-95vw lg:w-92vw bg-white flex rounded-xl shadow-lg'>
         <SideBar auth = {auth} showModal = {showModal} setShowModal = {setShowModal} />
             <Switch>
             <Route path = '/rooms/:id'>

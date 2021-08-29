@@ -35,25 +35,25 @@ function SignUp({toShowLogin,setToShowLogin}) {
             }
      }
 
-     const duplicateValidate = () => {
+     const validate = () => {
          setError(error=>(
             { ...error,
             emailError:(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(String(email).toLowerCase())
             ?'':'Invalid Email Address',
-            passwordError:(/^[A-Za-z]\w{7,14}$/).test(String(password).toLowerCase())?'':'Invalid Password'
+            passwordError:(/^[A-Za-z]\w{7,20}$/).test(String(password).toLowerCase())?'':'Password must be between 8-20 digits and must contain numbers and characters. No special symbols are allowed'
         }),(currentError)=>handleSignUpAuth(currentError))
      }
     
     const  handleSignUp = (e) => {
         e.preventDefault()
-        duplicateValidate()
+        validate()
             
     }
 
     return (
         <div className = 'w-90% md:w-70%  px-12 bg-white py-8 rounded-lg shadow-md' >
             <p className = 'text-center text-sm md:text-base font-light' >Already have an account?<span onClick = {()=>setToShowLogin(state=>!state)} className = 'underline cursor-pointer'> Login</span></p>
-            <h1 className = 'text-center font-bold text-3xl md:text-4+xl mt-6 mb-6'>Sign Up</h1>
+            <h1 className = 'text-center font-bold text-3xl md:text-4+xl mt-6 mb-8'>Sign Up</h1>
             <p ref = {firebaseError} className = "text-red-600 text-xs mb-4 text-center"> {auth.signUpError}</p>
             <form className = 'flex flex-col justify-center' onSubmit = {(e)=> handleSignUp(e)}>
                 <div className = 'bg-gray flex items-center px-2 mb-2 rounded'>

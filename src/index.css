@@ -109,23 +109,3 @@ code {
 .six > div:nth-of-type(3) {
 	animation-delay: .3s;
 }
-
-
-/* .not-found { */
-  /* transform:translateX(-50%); */
-  /* -webkit-animation: cssAnimation 3s forwards;  */
-    /* animation: cssAnimation 3s forwards; */
-/* } */
-
-/* @keyframes cssAnimation {
-  0%   {opacity: 1;}
-  90%  {opacity: 1;}
-  100% {opacity: 0;display:none}
-}
-
-@-webkit-keyframes cssAnimation {
-  0%   {opacity: 1;}
-  90%  {opacity: 1;}
-  100% {opacity: 0;display:none}
-  
-} */

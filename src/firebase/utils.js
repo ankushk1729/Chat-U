@@ -79,7 +79,8 @@ const getAllContactedUsers = ({user,dispatch,GET_USER}) => {
     db.collection('users').doc(user.uid).get().then((doc)=>{
        doc.data() && doc.data().contacts.forEach((item=>{
             db.collection('users').doc(item).get().then((doc)=>{
-                dispatch(GET_USER({id:item,email:doc.data().email,photoURL:doc.data().photoURL}))
+                console.log(doc.data())
+                doc.data() && dispatch(GET_USER({id:item,email:doc.data().email,photoURL:doc.data().photoURL}))
             })
         }))
 
